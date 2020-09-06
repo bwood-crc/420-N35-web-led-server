@@ -1,11 +1,11 @@
 #include <ESP8266WiFi.h>
 
-const char* ssid = "********";  // Enter SSID here
-const char* password = "*******";  //Enter Password here
+const char* ssid = "SSID";  // Enter SSID here
+const char* password = "****PASSWORD*****";  //Enter Password here
 
 String header; // Variable to store the HTTP request
 String LED1State = "off";
-const int LED1 = D0;
+const int LED1 = D1;
 WiFiServer server(80);
 
 void setup() {
@@ -67,20 +67,18 @@ void loop() {
             client.println("text-decoration: none; font-size: 35px; margin: 2px; cursor: pointer;}");
             client.println(".button2 {background-color: #555555;}</style></head>");
 
-            client.println("<svg width=\"300\" height=\"80\"><text fill=\"#00bfbf\" font-family=\"serif\" font-size=\"24\" id=\"svg_1\" stroke=\"#000000\" text-anchor=\"middle\" transform=\"matrix(1.35388 0 0 1.42308 -6.66283 -8.67308)\" x=\"86.5\" xml:space=\"preserve\" y=\"41.5\">Circuit Digest</text></svg>");
+            client.println("<svg width=\"300\" height=\"80\"><text fill=\"#00bfbf\" font-family=\"serif\" font-size=\"24\" id=\"svg_1\" stroke=\"#000000\" text-anchor=\"middle\" transform=\"matrix(1.35388 0 0 1.42308 -6.66283 -8.67308)\" x=\"86.5\" xml:space=\"preserve\" y=\"41.5\">IOT 1</text></svg>");
 
             // Web Page Heading
-            client.println("<body><h1>Welcome to ESP12e Web Server</h1>");
+            client.println("<body><h1>Welcome to the ESP12E Web Server Demo</h1>");
             client.println("<p>LED1_State: " + LED1State + "</p>");
             // If the LED1State is off, it displays the ON button
             if (LED1State == "off") {
               client.println("<p><a href=\"/LED1/on\"><button class=\"button\">ON</button></a></p>");
-              client.println("<svg width=\"500\" height=\"300\"><ellipse cx=\"258.5\" cy=\"125.5\" fill=\"#ffffff\" rx=\"47\" ry=\"52\" stroke=\"#ffffaa\" stroke-width=\"5\"/><rect fill=\"#cccccc\" height=\"40\" stroke=\"#ffffaa\" stroke-width=\"5\" transform=\"rotate(-0.485546 261 187.5)\" width=\"39\" x=\"241.5\" y=\"167.5\"/></svg>");
-
+              client.println("<svg width=\"500\" height=\"300\"><ellipse cx=\"258.5\" cy=\"125.5\" fill=\"#ff7f00\" rx=\"47\" ry=\"52\" stroke=\"#ffffaa\" stroke-width=\"5\"/><rect fill=\"#cccccc\" height=\"40\" stroke=\"#ffffaa\" stroke-width=\"5\" transform=\"rotate(-0.485546 261 187.5)\" width=\"39\" x=\"241.5\" y=\"167.5\"/></svg>");
             } else {
               client.println("<p><a href=\"/LED1/off\"><button class=\"button button2\">OFF</button></a></p>");
-              client.println("<svg width=\"500\" height=\"300\"><ellipse cx=\"258.5\" cy=\"125.5\" fill=\"#ff7f00\" rx=\"47\" ry=\"52\" stroke=\"#ffffaa\" stroke-width=\"5\"/><rect fill=\"#cccccc\" height=\"40\" stroke=\"#ffffaa\" stroke-width=\"5\" transform=\"rotate(-0.485546 261 187.5)\" width=\"39\" x=\"241.5\" y=\"167.5\"/></svg>");
-
+              client.println("<svg width=\"500\" height=\"300\"><ellipse cx=\"258.5\" cy=\"125.5\" fill=\"#ffffff\" rx=\"47\" ry=\"52\" stroke=\"#ffffaa\" stroke-width=\"5\"/><rect fill=\"#cccccc\" height=\"40\" stroke=\"#ffffaa\" stroke-width=\"5\" transform=\"rotate(-0.485546 261 187.5)\" width=\"39\" x=\"241.5\" y=\"167.5\"/></svg>");
             }
             client.println("</body></html>");
             client.println();
@@ -95,6 +93,6 @@ void loop() {
   }
   header = "";
   client.stop();
-  Serial.println("Client disconnected");
-  Serial.println("");
+  //Serial.println("Client disconnected");
+  //Serial.println("");
 }
